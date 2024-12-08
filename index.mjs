@@ -1,9 +1,15 @@
 /**
- * @typedef {string | number | unknown[] | Record<PropertyKey, unknown> | null | undefined} ValueType
+ * @typedef {unknown[] | never[]} ArrayLiteralType
+ *
+ * @typedef {Record<PropertyKey, unknown> | Record<PropertyKey, never>} ObjectLiteralType
+ *
+ * @typedef {string | number | ArrayLiteralType | ObjectLiteralType | null | undefined} ValueType
+ *
+ * @typedef {WeakMap<WeakKey, ArrayLiteralType | ObjectLiteralType>} WeakMapType
  */
 
 /**
- * @param {ValueType} v
+ * @param {ValueType | ValueType[]} v
  * @returns {boolean}
  */
 function isArray (v) {
@@ -11,7 +17,7 @@ function isArray (v) {
 }
 
 /**
- * @param {ValueType} v
+ * @param {ValueType | ValueType[]} v
  * @returns {boolean}
  */
 function isObject (v) {
@@ -19,7 +25,7 @@ function isObject (v) {
 }
 
 /**
- * @param {ValueType} v
+ * @param {ValueType | ValueType[]} v
  * @returns {boolean}
  */
 function isFunction (v) {
@@ -27,7 +33,7 @@ function isFunction (v) {
 }
 
 /**
- * @param {ValueType} v
+ * @param {ValueType | ValueType[]} v
  * @returns {boolean}
  */
 function isPrimitive (v) {
@@ -35,9 +41,9 @@ function isPrimitive (v) {
 }
 
 /**
- * @param {Array<unknown>} v
- * @param {WeakMap<PropertyKey, unknown>} weakMap
- * @returns {Array<unknown>}
+ * @param {ArrayLiteralType} v
+ * @param {WeakMapType} weakMap
+ * @returns {ArrayLiteralType}
  */
 function getArray (v, weakMap) {
   const a = []
@@ -48,9 +54,9 @@ function getArray (v, weakMap) {
 }
 
 /**
- * @param {Record<PropertyKey, unknown>} v
- * @param {WeakMap<PropertyKey, unknown>} weakMap
- * @returns {Record<PropertyKey, unknown>}
+ * @param {ObjectLiteralType} v
+ * @param {WeakMapType} weakMap
+ * @returns {ObjectLiteralType}
  */
 function getObject (v, weakMap) {
   const o = {}
@@ -61,14 +67,14 @@ function getObject (v, weakMap) {
 }
 
 /**
- * @param {WeakMap<PropertyKey, unknown>} weakMap
- * @returns {(a: Array<unknown>, v: unknown) => Array<unknown>}
+ * @param {WeakMapType} weakMap
+ * @returns {(a: ArrayLiteralType, v: ValueType | ValueType[]) => ArrayLiteralType}
  */
 function getReduceArray (weakMap) {
   /**
-   * @param {Array<unknown>} a
-   * @param {unknown} v
-   * @returns {Array<unknown>}
+   * @param {ArrayLiteralType} a
+   * @param {ValueType | ValueType[]} v
+   * @returns {ArrayLiteralType}
    */
   return function reduceArray (a, v) {
     if (isPrimitive(v) || isFunction(v)) {
@@ -94,13 +100,13 @@ function getReduceArray (weakMap) {
 }
 
 /**
- * @param {WeakMap<PropertyKey, unknown>} weakMap
- * @returns {(entry: Array<PropertyKey, unknown>) => Array<PropertyKey, unknown>}
+ * @param {WeakMapType} weakMap
+ * @returns {(entry: [PropertyKey, ValueType | ValueType[]]) => [PropertyKey, ValueType | ValueType[]]}
  */
 function getMapEntries (weakMap) {
   /**
-   * @param {Array<PropertyKey, unknown>} entry
-   * @returns {Array<PropertyKey, unknown>}
+   * @param {[PropertyKey, ValueType | ValueType[]]} entry
+   * @returns {[PropertyKey, ValueType | ValueType[]]}
    */
   return function mapEntries ([k, v]) {
     if (isPrimitive(v) || isFunction(v)) return [k, v]
@@ -122,9 +128,9 @@ function getMapEntries (weakMap) {
 /**
  * Duplicate a value (using a `weakMap` in case of circular values)
  *
- * @param {ValueType} v
- * @param {WeakMap<PropertyKey, unknown>} weakMap
- * @returns {ValueType}
+ * @param {ValueType | ValueType[]} v
+ * @param {WeakMapType} weakMap
+ * @returns {ValueType | ValueType[]}
  */
 function toDuplicate (v, weakMap) {
   if (isPrimitive(v) || isFunction(v)) return v
@@ -141,8 +147,8 @@ function toDuplicate (v, weakMap) {
 /**
  * Duplicate a value
  *
- * @param {ValueType} v
- * @returns {ValueType}
+ * @param {ValueType | ValueType[]} v
+ * @returns {ValueType | ValueType[]}
  */
 export default function dupe (v) {
   return (

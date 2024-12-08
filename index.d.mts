@@ -1,3 +1,6 @@
-type ValueType = string | number | unknown[] | Record<PropertyKey, unknown> | null | undefined
+type ArrayLiteralType = unknown[] | never[]
+type ObjectLiteralType = Record<PropertyKey, unknown> | Record<PropertyKey, never>
 
-export default function dupe (v: ValueType): ValueType
+type ValueType = string | number | ArrayLiteralType | ObjectLiteralType | null | undefined
+
+export default function dupe (v: ValueType | ValueType[]): ValueType | ValueType[]
