@@ -20,6 +20,7 @@ export default [
     languageOptions: {
       ...standard.recommended.languageOptions,
       globals: {
+        ...standard.recommended.languageOptions.globals,
         ...globals.node
       }
     }
@@ -32,6 +33,7 @@ export default [
     languageOptions: {
       ...standard.recommended.languageOptions,
       globals: {
+        ...typescript.recommended.languageOptions.globals,
         ...globals.mocha
       }
     }
@@ -44,6 +46,7 @@ export default [
     languageOptions: {
       ...typescript.recommended.languageOptions,
       globals: {
+        ...typescript.recommended.languageOptions.globals,
         ...globals.node
       }
     }
