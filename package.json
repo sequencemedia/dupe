@@ -1,0 +1,47 @@
+{
+  "name": "@sequencemedia/dupe",
+  "version": "0.0.0",
+  "main": "./index.mjs",
+  "type": "module",
+  "types": "./index.d.mts",
+  "author": {
+    "name": "Jonathan Perry for Sequence Media Limited",
+    "email": "sequencemedia@sequencemedia.net",
+    "url": "https://sequencemedia.net"
+  },
+  "keywords": [
+    "dupe",
+    "duplicate",
+    "clone",
+    "deep clone",
+    "deep"
+  ],
+  "license": "ISC",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "cross-env NODE_ENV=test mocha test --recursive"
+  },
+  "dependencies": {
+    "-": "^0.0.1",
+    "chai": "^5.1.2",
+    "D": "^1.0.0",
+    "debug": "^4.4.0",
+    "mocha": "^11.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@sequencemedia/eslint-config-standard": "^0.2.0",
+    "@sequencemedia/eslint-config-typescript": "^0.1.0",
+    "@types/debug": "^4.1.12",
+    "core-js": "^3.39.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^9.16.0",
+    "globals": "^15.13.0",
+    "husky": "^9.1.7"
+  },
+  "exports": {
+    ".": "./index.mjs"
+  }
+}
