@@ -3,7 +3,7 @@
  *
  * @typedef {Record<PropertyKey, unknown> | Record<PropertyKey, never>} ObjectLiteralType
  *
- * @typedef {string | number | ArrayLiteralType | ObjectLiteralType | null | undefined} ValueType
+ * @typedef {string | number | ArrayLiteralType | ObjectLiteralType | Buffer | null | undefined} ValueType
  *
  * @typedef {WeakMap<WeakKey, ArrayLiteralType | ObjectLiteralType>} WeakMapType
  */
@@ -21,7 +21,7 @@ function isArray (v) {
  * @returns {boolean}
  */
 function isObject (v) {
-  return (v || false) instanceof Object && !Array.isArray(v)
+  return (v || false) instanceof Object && !Array.isArray(v) && !Buffer.isBuffer(v)
 }
 
 /**
@@ -37,8 +37,27 @@ function isFunction (v) {
  * @returns {boolean}
  */
 function isPrimitive (v) {
-  return !isObject(v) && !isArray(v) && !isFunction(v)
+  return !(
+    isObject(v) ||
+    isArray(v) ||
+    isFunction(v) ||
+    isBuffer(v)
+  )
 }
+
+/**
+ * @param {ValueType | ValueType[]} v
+ * @returns {boolean}
+ */
+function isBuffer (v) {
+  return Buffer.isBuffer(v)
+}
+
+/**
+ *  function isArrayBuffer (v) {
+ *    return v instanceof ArrayBuffer
+ *  }
+ */
 
 /**
  * @param {ArrayLiteralType} v
@@ -64,6 +83,18 @@ function getObject (v, weakMap) {
   weakMap.set(v, o)
 
   return Object.assign(o, Object.fromEntries(Object.entries(v).map(getMapEntries(weakMap))))
+}
+
+/**
+ * @param {Buffer} v
+ * @param {WeakMapType} weakMap
+ * @returns {Buffer}
+ */
+function getBuffer (v, weakMap) {
+  const b = Buffer.from(v)
+
+  weakMap.set(v, b)
+  return b
 }
 
 /**
@@ -96,6 +127,11 @@ function getReduceArray (weakMap) {
       a.push(getObject(v, weakMap))
       return a
     }
+
+    if (isBuffer(v)) {
+      a.push(getBuffer(v, weakMap))
+      return a
+    }
   }
 }
 
@@ -122,6 +158,10 @@ function getMapEntries (weakMap) {
     if (isObject(v)) {
       return [k, getObject(v, weakMap)]
     }
+
+    if (isBuffer(v)) {
+      return [k, getBuffer(v, weakMap)]
+    }
   }
 }
 
@@ -140,5 +180,9 @@ export default function toDuplicate (v) {
 
   if (isObject(v)) {
     return getObject(v, new WeakMap())
+  }
+
+  if (isBuffer(v)) {
+    return getBuffer(v, new WeakMap())
   }
 }
