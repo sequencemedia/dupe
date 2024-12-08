@@ -36,6 +36,14 @@ function isFunction (v) {
  * @param {ValueType | ValueType[]} v
  * @returns {boolean}
  */
+function isBuffer (v) {
+  return Buffer.isBuffer(v)
+}
+
+/**
+ * @param {ValueType | ValueType[]} v
+ * @returns {boolean}
+ */
 function isPrimitive (v) {
   return !(
     isObject(v) ||
@@ -43,14 +51,6 @@ function isPrimitive (v) {
     isFunction(v) ||
     isBuffer(v)
   )
-}
-
-/**
- * @param {ValueType | ValueType[]} v
- * @returns {boolean}
- */
-function isBuffer (v) {
-  return Buffer.isBuffer(v)
 }
 
 /**

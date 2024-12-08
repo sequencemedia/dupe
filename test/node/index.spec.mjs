@@ -2,9 +2,9 @@ import {
   expect
 } from 'chai'
 
-import dupe from '@sequencemedia/dupe'
+import dupe from '@sequencemedia/dupe/node'
 
-describe('`@sequencemedia/dupe`', () => {
+describe('`@sequencemedia/dupe/node`', () => {
   it('is a function', () => expect(dupe).to.be.a('function'))
 
   describe('`dupe()`', () => {
@@ -169,6 +169,65 @@ describe('`@sequencemedia/dupe`', () => {
         it('returns an object of the same structure', () => expect(dupe(v)).to.eql(v))
 
         it('is not the same object', () => expect(dupe(v)).not.to.equal(v))
+      })
+    })
+
+    /**
+     *  Buffer
+     */
+    describe('Buffer', () => {
+      describe('A buffer from a string', () => {
+        const s = 'Buffer'
+
+        it('returns a buffer of the same structure', () => {
+          const v = Buffer.from(s)
+          const d = dupe(v)
+
+          return expect(d).to.eql(v)
+        })
+
+        it('is not the same buffer', () => {
+          const v = Buffer.from(s)
+          const d = dupe(v)
+
+          return expect(d).not.to.equal(v)
+        })
+      })
+
+      describe('An buffer from an array', () => {
+        const a = [0x62, 0x75, 0x66, 0x66, 0x65, 0x72]
+
+        it('returns a buffer of the same structure', () => {
+          const v = Buffer.from(a)
+          const d = dupe(v)
+
+          return expect(d).to.eql(v)
+        })
+
+        it('is not the same buffer', () => {
+          const v = Buffer.from(a)
+          const d = dupe(v)
+
+          return expect(d).not.to.equal(v)
+        })
+      })
+
+      describe('An buffer from a `Uint8Array`', () => {
+        const a = new Uint8Array([0x62, 0x75, 0x66, 0x66, 0x65, 0x72])
+
+        it('returns a buffer of the same structure', () => {
+          const v = Buffer.from(a)
+          const d = dupe(v)
+
+          return expect(d).to.eql(v)
+        })
+
+        it('is not the same buffer', () => {
+          const v = Buffer.from(a)
+          const d = dupe(v)
+
+          return expect(d).not.to.equal(v)
+        })
       })
     })
 

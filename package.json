@@ -6,11 +6,12 @@
     "duplicate",
     "clone",
     "deep clone",
-    "deep"
+    "deep",
+    "structured clone"
   ],
-  "main": "./index.mjs",
+  "main": "./src/index.mjs",
   "type": "module",
-  "types": "./index.d.mts",
+  "types": "./src/index.d.mts",
   "author": {
     "name": "Jonathan Perry for Sequence Media Limited",
     "email": "sequencemedia@sequencemedia.net",
@@ -42,7 +43,12 @@
     "globals": "^15.13.0",
     "husky": "^9.1.7"
   },
+  "imports": {
+    "#dupe": "./src/index.mjs",
+    "#dupe/node": "./src/node/index.mjs"
+  },
   "exports": {
-    ".": "./index.mjs"
+    ".": "./src/index.mjs",
+    "./node": "./src/node/index.mjs"
   }
 }
