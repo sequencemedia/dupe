@@ -126,32 +126,19 @@ function getMapEntries (weakMap) {
 }
 
 /**
- * Duplicate a value (using a `weakMap` in case of circular values)
- *
- * @param {ValueType | ValueType[]} v
- * @param {WeakMapType} weakMap
- * @returns {ValueType | ValueType[]}
- */
-function toDuplicate (v, weakMap) {
-  if (isPrimitive(v) || isFunction(v)) return v
-
-  if (isArray(v)) {
-    return getArray(v, weakMap)
-  }
-
-  if (isObject(v)) {
-    return getObject(v, weakMap)
-  }
-}
-
-/**
  * Duplicate a value
  *
  * @param {ValueType | ValueType[]} v
  * @returns {ValueType | ValueType[]}
  */
-export default function dupe (v) {
-  return (
-    toDuplicate(v, new WeakMap())
-  )
+export default function toDuplicate (v) {
+  if (isPrimitive(v) || isFunction(v)) return v
+
+  if (isArray(v)) {
+    return getArray(v, new WeakMap())
+  }
+
+  if (isObject(v)) {
+    return getObject(v, new WeakMap())
+  }
 }
