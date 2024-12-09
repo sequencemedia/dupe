@@ -13,7 +13,15 @@
     "emitDeclarationOnly": true,
     "declarationMap": true,
     "strictNullChecks": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "#dupe": [
+        "src/index.mjs"
+      ],
+      "#dupe/node": [
+        "src/node/index.mjs"
+      ]
+    }
   },
   "include": [
     "src/**/*"

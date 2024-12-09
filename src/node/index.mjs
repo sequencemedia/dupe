@@ -1,11 +1,8 @@
 /**
- * @typedef {unknown[] | never[]} ArrayLiteralType
- *
- * @typedef {Record<PropertyKey, unknown> | Record<PropertyKey, never>} ObjectLiteralType
- *
- * @typedef {string | number | ArrayLiteralType | ObjectLiteralType | Buffer | null | undefined} ValueType
- *
- * @typedef {WeakMap<WeakKey, ArrayLiteralType | ObjectLiteralType>} WeakMapType
+ * @typedef {import('#dupe/node').ArrayLiteralType} ArrayLiteralType
+ * @typedef {import('#dupe/node').ObjectLiteralType} ObjectLiteralType
+ * @typedef {import('#dupe/node').ValueType} ValueType
+ * @typedef {import('#dupe/node').WeakMapType} WeakMapType
  */
 
 /**
@@ -68,7 +65,6 @@ function getArray (v, weakMap) {
   const a = []
 
   weakMap.set(v, a)
-
   return v.reduce(getReduceArray(weakMap), a)
 }
 
@@ -81,7 +77,6 @@ function getObject (v, weakMap) {
   const o = {}
 
   weakMap.set(v, o)
-
   return Object.assign(o, Object.fromEntries(Object.entries(v).map(getMapEntries(weakMap))))
 }
 

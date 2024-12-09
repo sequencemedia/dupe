@@ -1,18 +1,15 @@
 /**
- * @typedef {unknown[] | never[]} ArrayLiteralType
- *
- * @typedef {Record<PropertyKey, unknown> | Record<PropertyKey, never>} ObjectLiteralType
- *
- * @typedef {string | number | ArrayLiteralType | ObjectLiteralType | null | undefined} ValueType
- *
- * @typedef {WeakMap<WeakKey, ArrayLiteralType | ObjectLiteralType>} WeakMapType
+ * @typedef {import('#dupe').ArrayLiteralType} ArrayLiteralType
+ * @typedef {import('#dupe').ObjectLiteralType} ObjectLiteralType
+ * @typedef {import('#dupe').ValueType} ValueType
+ * @typedef {import('#dupe').WeakMapType} WeakMapType
  */
 
 /**
  * @param {ValueType | ValueType[]} v
  * @returns {boolean}
  */
-export function isArray (v) {
+function isArray (v) {
   return Array.isArray(v)
 }
 
@@ -20,7 +17,7 @@ export function isArray (v) {
  * @param {ValueType | ValueType[]} v
  * @returns {boolean}
  */
-export function isObject (v) {
+function isObject (v) {
   return (v || false) instanceof Object && !Array.isArray(v)
 }
 
@@ -28,9 +25,10 @@ export function isObject (v) {
  * @param {ValueType | ValueType[]} v
  * @returns {boolean}
  */
-export function isFunction (v) {
+function isFunction (v) {
   return v instanceof Function
 }
+
 /**
  * @param {ValueType | ValueType[]} v
  * @returns {boolean}
@@ -52,7 +50,6 @@ function getArray (v, weakMap) {
   const a = []
 
   weakMap.set(v, a)
-
   return v.reduce(getReduceArray(weakMap), a)
 }
 
@@ -65,7 +62,6 @@ function getObject (v, weakMap) {
   const o = {}
 
   weakMap.set(v, o)
-
   return Object.assign(o, Object.fromEntries(Object.entries(v).map(getMapEntries(weakMap))))
 }
 
