@@ -1,8 +1,8 @@
 /**
- * @typedef {import('#dupe').ArrayLiteralType} ArrayLiteralType
- * @typedef {import('#dupe').ObjectLiteralType} ObjectLiteralType
- * @typedef {import('#dupe').ValueType} ValueType
- * @typedef {import('#dupe').WeakMapType} WeakMapType
+ * @typedef {DupeTypes.ArrayLiteralType} ArrayLiteralType
+ * @typedef {DupeTypes.ObjectLiteralType} ObjectLiteralType
+ * @typedef {DupeTypes.ValueType} ValueType
+ * @typedef {DupeTypes.WeakMapType} WeakMapType
  */
 
 /**

@@ -31,6 +31,7 @@ const presets = [
   ]
 ]
 
+// @ts-ignore
 module.exports = (api) => {
   if (api) api.cache.using(env)
 

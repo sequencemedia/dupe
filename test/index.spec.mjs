@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import {
   expect
 } from 'chai'
@@ -25,7 +27,7 @@ describe('`@sequencemedia/dupe`', () => {
       describe('An array of numbers', () => {
         const v = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-        it('returns an array of the same structure', () => expect(dupe(v)).to.eql(v))
+        it('returns an array with the same structure', () => expect(dupe(v)).to.eql(v))
 
         it('is not the same array', () => expect(dupe(v)).not.to.equal(v))
       })
@@ -33,7 +35,7 @@ describe('`@sequencemedia/dupe`', () => {
       describe('An array of strings', () => {
         const v = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
 
-        it('returns an array of the same structure', () => expect(dupe(v)).to.eql(v))
+        it('returns an array with the same structure', () => expect(dupe(v)).to.eql(v))
 
         it('is not the same array', () => expect(dupe(v)).not.to.equal(v))
       })
@@ -49,7 +51,7 @@ describe('`@sequencemedia/dupe`', () => {
 
         const v = [a, b, c]
 
-        it('returns an array of the same structure', () => expect(dupe(v)).to.eql(v))
+        it('returns an array with the same structure', () => expect(dupe(v)).to.eql(v))
 
         it('is not the same array', () => expect(dupe(v)).not.to.equal(v))
       })
@@ -65,7 +67,7 @@ describe('`@sequencemedia/dupe`', () => {
 
         const v = [a, b, c]
 
-        it('returns an array of the same structure', () => expect(dupe(v)).to.eql(v))
+        it('returns an array with the same structure', () => expect(dupe(v)).to.eql(v))
 
         it('is not the same array', () => expect(dupe(v)).not.to.equal(v))
       })
@@ -73,7 +75,7 @@ describe('`@sequencemedia/dupe`', () => {
       describe('An array of booleans', () => {
         const v = [true, false, true, false, true, false, true, false, true, false]
 
-        it('returns an array of the same structure', () => expect(dupe(v)).to.eql(v))
+        it('returns an array with the same structure', () => expect(dupe(v)).to.eql(v))
 
         it('is not the same array', () => expect(dupe(v)).not.to.equal(v))
       })
@@ -81,7 +83,7 @@ describe('`@sequencemedia/dupe`', () => {
       describe('An array of nulls', () => {
         const v = [null, null, null, null, null, null, null, null, null, null]
 
-        it('returns an array of the same structure', () => expect(dupe(v)).to.eql(v))
+        it('returns an array with the same structure', () => expect(dupe(v)).to.eql(v))
 
         it('is not the same array', () => expect(dupe(v)).not.to.equal(v))
       })
@@ -89,7 +91,7 @@ describe('`@sequencemedia/dupe`', () => {
       describe('An array of undefined', () => {
         const v = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined]
 
-        it('returns an array of the same structure', () => expect(dupe(v)).to.eql(v))
+        it('returns an array with the same structure', () => expect(dupe(v)).to.eql(v))
 
         it('is not the same array', () => expect(dupe(v)).not.to.equal(v))
       })
@@ -102,7 +104,7 @@ describe('`@sequencemedia/dupe`', () => {
       describe('An object of numbers', () => {
         const v = { a: 0, b: 1, c: 2, d: 3, e: 4, f: 5, g: 6, h: 7, i: 8, j: 9 }
 
-        it('returns an object of the same structure', () => expect(dupe(v)).to.eql(v))
+        it('returns an object with the same structure', () => expect(dupe(v)).to.eql(v))
 
         it('is not the same object', () => expect(dupe(v)).not.to.equal(v))
       })
@@ -110,7 +112,7 @@ describe('`@sequencemedia/dupe`', () => {
       describe('An object of strings', () => {
         const v = { a: 'a', b: 'b', c: 'c', d: 'd', e: 'e', f: 'f', g: 'g', h: 'h', i: 'i', j: 'j' }
 
-        it('returns an object of the same structure', () => expect(dupe(v)).to.eql(v))
+        it('returns an object with the same structure', () => expect(dupe(v)).to.eql(v))
 
         it('is not the same object', () => expect(dupe(v)).not.to.equal(v))
       })
@@ -126,7 +128,7 @@ describe('`@sequencemedia/dupe`', () => {
 
         const v = { a, b, c }
 
-        it('returns an object of the same structure', () => expect(dupe(v)).to.eql(v))
+        it('returns an object with the same structure', () => expect(dupe(v)).to.eql(v))
 
         it('is not the same object', () => expect(dupe(v)).not.to.equal(v))
       })
@@ -142,7 +144,7 @@ describe('`@sequencemedia/dupe`', () => {
 
         const v = { a, b, c }
 
-        it('returns an object of the same structure', () => expect(dupe(v)).to.eql(v))
+        it('returns an object with the same structure', () => expect(dupe(v)).to.eql(v))
 
         it('is not the same object', () => expect(dupe(v)).not.to.equal(v))
       })
@@ -150,7 +152,7 @@ describe('`@sequencemedia/dupe`', () => {
       describe('An object of booleans', () => {
         const v = { a: true, b: false, c: true, d: false, e: true, f: false, g: true, h: false, i: true, j: false }
 
-        it('returns an array of the same structure', () => expect(dupe(v)).to.eql(v))
+        it('returns an array with the same structure', () => expect(dupe(v)).to.eql(v))
 
         it('is not the same object', () => expect(dupe(v)).not.to.equal(v))
       })
@@ -158,7 +160,7 @@ describe('`@sequencemedia/dupe`', () => {
       describe('An object of nulls', () => {
         const v = { a: null, b: null, c: null, d: null, e: null, f: null, g: null, h: null, i: null, j: null }
 
-        it('returns an object of the same structure', () => expect(dupe(v)).to.eql(v))
+        it('returns an object with the same structure', () => expect(dupe(v)).to.eql(v))
 
         it('is not the same object', () => expect(dupe(v)).not.to.equal(v))
       })
@@ -166,7 +168,7 @@ describe('`@sequencemedia/dupe`', () => {
       describe('An object of undefined', () => {
         const v = { a: undefined, b: undefined, c: undefined, d: undefined, e: undefined, f: undefined, g: undefined, h: undefined, i: undefined, j: undefined }
 
-        it('returns an object of the same structure', () => expect(dupe(v)).to.eql(v))
+        it('returns an object with the same structure', () => expect(dupe(v)).to.eql(v))
 
         it('is not the same object', () => expect(dupe(v)).not.to.equal(v))
       })

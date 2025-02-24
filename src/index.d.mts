@@ -1,6 +1,6 @@
-export type ArrayLiteralType = unknown[] | never[]
-export type ObjectLiteralType = Record<PropertyKey, unknown> | Record<PropertyKey, never>
-export type ValueType = string | number | ArrayLiteralType | ObjectLiteralType | null | undefined
-export type WeakMapType = WeakMap<WeakKey, ArrayLiteralType | ObjectLiteralType>
+export type ArrayLiteralType = DupeTypes.ArrayLiteralType
+export type ObjectLiteralType = DupeTypes.ObjectLiteralType
+export type ValueType = DupeTypes.ValueType
+export type WeakMapType = DupeTypes.WeakMapType
 
 export default function toDuplicate (v: ValueType | ValueType[]): ValueType | ValueType[]
