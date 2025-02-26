@@ -1,4 +1,7 @@
-// @ts-nocheck
+/**
+ *  @typedef {DupeTypes.ArrayLiteralType} ArrayLiteralType
+ *  @typedef {DupeTypes.ObjectLiteralType} ObjectLiteralType
+ */
 
 import {
   expect
@@ -41,10 +44,19 @@ describe('`@sequencemedia/dupe/node`', () => {
       })
 
       describe('An array of arrays', () => {
+        /**
+         *  @type {ArrayLiteralType}
+         */
         const a = []
 
+        /**
+         *  @type {ArrayLiteralType}
+         */
         const b = []
 
+        /**
+         *  @type {ArrayLiteralType}
+         */
         const c = [a, b]
 
         c.push(c)
@@ -57,12 +69,24 @@ describe('`@sequencemedia/dupe/node`', () => {
       })
 
       describe('An array of objects', () => {
+        /**
+         *  @type {ObjectLiteralType}
+         */
         const a = {}
 
+        /**
+         *  @type {ObjectLiteralType}
+         */
         const b = {}
 
+        /**
+         *  @type {ObjectLiteralType}
+         */
         const c = { a, b }
 
+        /**
+         *  @type {ObjectLiteralType & { c?: ObjectLiteralType }}
+         */
         c.c = c
 
         const v = [a, b, c]
@@ -118,10 +142,19 @@ describe('`@sequencemedia/dupe/node`', () => {
       })
 
       describe('An object of arrays', () => {
+        /**
+         *  @type {ArrayLiteralType}
+         */
         const a = []
 
+        /**
+         *  @type {ArrayLiteralType}
+         */
         const b = []
 
+        /**
+         *  @type {ArrayLiteralType & { c?: ArrayLiteralType }}
+         */
         const c = [a, b]
 
         c.c = [c]
@@ -134,10 +167,19 @@ describe('`@sequencemedia/dupe/node`', () => {
       })
 
       describe('An object of objects', () => {
+        /**
+         *  @type {ObjectLiteralType}
+         */
         const a = {}
 
+        /**
+         *  @type {ObjectLiteralType}
+         */
         const b = {}
 
+        /**
+         *  @type {ObjectLiteralType & { c?: ObjectLiteralType }}
+         */
         const c = { a, b }
 
         c.c = c
