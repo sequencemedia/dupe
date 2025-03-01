@@ -1,45 +1,45 @@
 /**
- * @typedef {DupeTypes.ArrayLiteralType} ArrayLiteralType
- * @typedef {DupeTypes.ObjectLiteralType} ObjectLiteralType
- * @typedef {DupeTypes.ValueType} ValueType
- * @typedef {DupeTypes.WeakMapType} WeakMapType
+ *  @typedef {DupeTypes.ArrayLiteralType} ArrayLiteralType
+ *  @typedef {DupeTypes.ObjectLiteralType} ObjectLiteralType
+ *  @typedef {DupeTypes.ValueType} ValueType
+ *  @typedef {DupeTypes.WeakMapType} WeakMapType
  */
 
 /**
- * @param {ValueType | ValueType[]} v
- * @returns {boolean}
+ *  @param {ValueType | ValueType[]} v
+ *  @returns {boolean}
  */
 function isArray (v) {
   return Array.isArray(v)
 }
 
 /**
- * @param {ValueType | ValueType[]} v
- * @returns {boolean}
+ *  @param {ValueType | ValueType[]} v
+ *  @returns {boolean}
  */
 function isObject (v) {
   return (v || false) instanceof Object && !Array.isArray(v) && !Buffer.isBuffer(v)
 }
 
 /**
- * @param {ValueType | ValueType[]} v
- * @returns {boolean}
+ *  @param {ValueType | ValueType[]} v
+ *  @returns {boolean}
  */
 function isFunction (v) {
   return v instanceof Function
 }
 
 /**
- * @param {ValueType | ValueType[]} v
- * @returns {boolean}
+ *  @param {ValueType | ValueType[]} v
+ *  @returns {boolean}
  */
 function isBuffer (v) {
   return Buffer.isBuffer(v)
 }
 
 /**
- * @param {ValueType | ValueType[]} v
- * @returns {boolean}
+ *  @param {ValueType | ValueType[]} v
+ *  @returns {boolean}
  */
 function isPrimitive (v) {
   return !(
@@ -57,9 +57,9 @@ function isPrimitive (v) {
  */
 
 /**
- * @param {ArrayLiteralType} v
- * @param {WeakMapType} weakMap
- * @returns {ArrayLiteralType}
+ *  @param {ArrayLiteralType} v
+ *  @param {WeakMapType} weakMap
+ *  @returns {ArrayLiteralType}
  */
 function getArray (v, weakMap) {
   const a = []
@@ -69,9 +69,9 @@ function getArray (v, weakMap) {
 }
 
 /**
- * @param {ObjectLiteralType} v
- * @param {WeakMapType} weakMap
- * @returns {ObjectLiteralType}
+ *  @param {ObjectLiteralType} v
+ *  @param {WeakMapType} weakMap
+ *  @returns {ObjectLiteralType}
  */
 function getObject (v, weakMap) {
   const o = {}
@@ -81,9 +81,9 @@ function getObject (v, weakMap) {
 }
 
 /**
- * @param {Buffer} v
- * @param {WeakMapType} weakMap
- * @returns {Buffer}
+ *  @param {Buffer} v
+ *  @param {WeakMapType} weakMap
+ *  @returns {Buffer}
  */
 function getBuffer (v, weakMap) {
   const b = Buffer.from(v)
@@ -93,14 +93,14 @@ function getBuffer (v, weakMap) {
 }
 
 /**
- * @param {WeakMapType} weakMap
- * @returns {(a: ArrayLiteralType, v: ValueType | ValueType[]) => ArrayLiteralType}
+ *  @param {WeakMapType} weakMap
+ *  @returns {(a: ArrayLiteralType, v: ValueType | ValueType[]) => ArrayLiteralType}
  */
 function getReduceArray (weakMap) {
   /**
-   * @param {ArrayLiteralType} a
-   * @param {ValueType | ValueType[]} v
-   * @returns {ArrayLiteralType}
+   *  @param {ArrayLiteralType} a
+   *  @param {ValueType | ValueType[]} v
+   *  @returns {ArrayLiteralType}
    */
   return function reduceArray (a, v) {
     if (isPrimitive(v) || isFunction(v)) {
@@ -131,13 +131,13 @@ function getReduceArray (weakMap) {
 }
 
 /**
- * @param {WeakMapType} weakMap
- * @returns {(entry: [PropertyKey, ValueType | ValueType[]]) => [PropertyKey, ValueType | ValueType[]]}
+ *  @param {WeakMapType} weakMap
+ *  @returns {(entry: [PropertyKey, ValueType | ValueType[]]) => [PropertyKey, ValueType | ValueType[]]}
  */
 function getMapEntries (weakMap) {
   /**
-   * @param {[PropertyKey, ValueType | ValueType[]]} entry
-   * @returns {[PropertyKey, ValueType | ValueType[]]}
+   *  @param {[PropertyKey, ValueType | ValueType[]]} entry
+   *  @returns {[PropertyKey, ValueType | ValueType[]]}
    */
   return function mapEntries ([k, v]) {
     if (isPrimitive(v) || isFunction(v)) return [k, v]
@@ -163,8 +163,8 @@ function getMapEntries (weakMap) {
 /**
  * Duplicate a value
  *
- * @param {ValueType | ValueType[]} v
- * @returns {ValueType | ValueType[]}
+ *  @param {ValueType | ValueType[]} v
+ *  @returns {ValueType | ValueType[]}
  */
 export default function toDuplicate (v) {
   if (isPrimitive(v) || isFunction(v)) return v
