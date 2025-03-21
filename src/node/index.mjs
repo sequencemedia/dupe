@@ -18,7 +18,7 @@ function isArray (v) {
  *  @returns {boolean}
  */
 function isObject (v) {
-  return (v || false) instanceof Object && !Array.isArray(v) && !Buffer.isBuffer(v)
+  return typeof (v || false) === 'object' && !Array.isArray(v) && !Buffer.isBuffer(v)
 }
 
 /**
