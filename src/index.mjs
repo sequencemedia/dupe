@@ -125,7 +125,7 @@ function getMapEntries (weakMap) {
 }
 
 /**
- * Duplicate a value
+ *  Duplicate a value
  *
  *  @param {ValueType | ValueType[]} v
  *  @returns {ValueType | ValueType[]}

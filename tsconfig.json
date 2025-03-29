@@ -5,6 +5,21 @@
     "allowJs": true,
     "checkJs": true,
     "noEmit": true,
-    "strict": true
-  }
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "#dupe": [
+        "src/index.mjs"
+      ],
+      "#dupe/node": [
+        "src/node/index.mjs"
+      ]
+    }
+  },
+  "include": [
+    "."
+  ],
+  "exclude": [
+    "test"
+  ]
 }
