@@ -29,11 +29,11 @@
   },
   "devDependencies": {
     "@sequencemedia/eslint-config-standard": "^0.2.72",
-    "@sequencemedia/eslint-config-typescript": "^0.1.122",
+    "@sequencemedia/eslint-config-typescript": "^0.1.123",
     "@types/chai": "^5.2.2",
     "@types/debug": "^4.1.12",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^24.0.15",
+    "@types/node": "^24.1.0",
     "chai": "^5.2.1",
     "cross-env": "^7.0.3",
     "eslint": "^9.31.0",
