@@ -28,12 +28,12 @@
     "debug": "^4.4.3"
   },
   "devDependencies": {
-    "@sequencemedia/eslint-config-standard": "^0.2.96",
-    "@sequencemedia/eslint-config-typescript": "^0.1.166",
+    "@sequencemedia/eslint-config-standard": "^0.2.97",
+    "@sequencemedia/eslint-config-typescript": "^0.1.167",
     "@types/chai": "^5.2.3",
     "@types/debug": "^4.1.12",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^24.9.1",
+    "@types/node": "^24.9.2",
     "chai": "^6.2.0",
     "cross-env": "^10.1.0",
     "eslint": "^9.38.0",
