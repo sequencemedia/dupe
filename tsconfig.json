@@ -6,18 +6,18 @@
     "checkJs": true,
     "noEmit": true,
     "strict": true,
-    "baseUrl": ".",
     "paths": {
       "#dupe": [
-        "src/index.mjs"
+        "./src/index.mjs"
       ],
       "#dupe/node": [
-        "src/node/index.mjs"
+        "./src/node/index.mjs"
       ]
     }
   },
   "include": [
-    "."
+    ".",
+    "./types"
   ],
   "exclude": [
     "test"

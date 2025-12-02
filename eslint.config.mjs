@@ -47,6 +47,10 @@ export default [
         ...globals.node,
         DupeTypes: 'readonly'
       }
+    },
+    rules: {
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-redundant-type-constituents': 'off'
     }
   }
 ]
