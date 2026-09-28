@@ -28,8 +28,8 @@
     "debug": "^4.4.3"
   },
   "devDependencies": {
-    "@sequencemedia/eslint-config-standard": "^0.2.126",
-    "@sequencemedia/eslint-config-typescript": "^0.1.218",
+    "@sequencemedia/eslint-config-standard": "^0.2.127",
+    "@sequencemedia/eslint-config-typescript": "^0.1.219",
     "@types/chai": "^5.2.3",
     "@types/debug": "^4.1.13",
     "@types/mocha": "^10.0.10",
